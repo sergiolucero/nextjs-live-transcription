@@ -38,16 +38,6 @@ const Home = () => {
                   Star
                 </GitHubButton>
               </span>
-
-              <span className="gradient-shadow bg-gradient-to-r to-[#13EF93]/50 from-[#149AFB]/80 rounded">
-                <a
-                  href="https://console.deepgram.com/signup?jump=keys"
-                  target="_blank"
-                  className="hidden text-xs md:inline-block bg-black text-white rounded m-px px-8 py-2 font-semibold"
-                >
-                  Get an API Key
-                </a>
-              </span>
             </div>
           </header>
         </div>
