@@ -16,7 +16,7 @@ const favorit = localFont({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#123456",
   initialScale: 1,
   width: "device-width",
   // maximumScale: 1, hitting accessability
