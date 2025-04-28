@@ -26,19 +26,6 @@ const Home = () => {
                 />
               </a>
             </div>
-            <div className="flex items-center gap-6 text-sm">
-              <span className="mt-1">
-                <GitHubButton
-                  href="https://github.com/deepgram-starters/nextjs-live-transcription"
-                  data-color-scheme="no-preference: light; light: light; dark: light;"
-                  data-size="large"
-                  data-show-count="true"
-                  aria-label="Star deepgram-starters/nextjs-live-transcription on GitHub"
-                >
-                  Star
-                </GitHubButton>
-              </span>
-            </div>
           </header>
         </div>
 
