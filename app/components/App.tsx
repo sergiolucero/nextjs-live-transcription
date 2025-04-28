@@ -25,7 +25,8 @@ const App: () => JSX.Element = () => {
   const keepAliveInterval = useRef<any>();
   const [transcript, setTranscript] = useState<string>('');
   const transcriptRef = useRef<string>('');
-
+  const lastSegmentRef = useRef<string>('');
+  
   useEffect(() => {
     setupMicrophone();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -62,14 +63,14 @@ const App: () => JSX.Element = () => {
       let thisCaption = data.channel.alternatives[0].transcript;
 
       console.log("thisCaption", thisCaption);
-      if (thisCaption !== "") {
+      if (thisCaption !== "" && thisCaption !== lastSegmentRef.current) {
         console.log('thisCaption !== ""', thisCaption);
         setCaption(thisCaption);
         setTranscript((prev) => prev + ' ' + thisCaption);
         transcriptRef.current += ' ' + thisCaption;
-
+        lastSegmentRef.current = thisCaption;
       }
-      console.log("TRANSCRIPT", transcript);
+      console.log("TRANSCRIPT", transcriptRef.current);
 
       if (thisCaption.toLowerCase().includes("stop")) {
         console.log("STOPWORD detected!");
