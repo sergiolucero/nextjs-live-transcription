@@ -1,4 +1,4 @@
-"use client";
+e"use client";
 
 import { useEffect, useRef, useState } from "react";
 import {
@@ -68,7 +68,7 @@ const App: () => JSX.Element = () => {
 
       if (thisCaption.toLowerCase().includes("stop")) {
         console.log("STOPWORD detected!");
-        saveTranscriptToFile(transcript);
+        saveTranscriptToFile(thisCaption);
       } 
       
       function saveTranscriptToFile(text: string) {
