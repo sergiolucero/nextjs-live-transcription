@@ -21,16 +21,14 @@ const App: () => JSX.Element = () => {
   const { connection, connectToDeepgram, connectionState } = useDeepgram();
   const { setupMicrophone, microphone, startMicrophone, microphoneState } =
     useMicrophone();
-  const captionTimeout = useRef<any>();
-  const keepAliveInterval = useRef<any>();
-  const [transcript, setTranscript] = useState<string>('');
+  const captionTimeout = useRef<ReturnType<typeof setTimeout>>();
+  const keepAliveInterval = useRef<ReturnType<typeof setInterval>>();
   const transcriptRef = useRef<string>('');
   const lastSegmentRef = useRef<string>('');
-  
+
   useEffect(() => {
     setupMicrophone();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [setupMicrophone]);
 
   useEffect(() => {
     if (microphoneState === MicrophoneState.Ready) {
@@ -43,16 +41,12 @@ const App: () => JSX.Element = () => {
         utterance_end_ms: 3000,
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [microphoneState]);
+  }, [microphoneState, connectToDeepgram]);
 
   useEffect(() => {
-    if (!microphone) return;
-    if (!connection) return;
+    if (!microphone || !connection) return;
 
     const onData = (e: BlobEvent) => {
-      // iOS SAFARI FIX:
-      // Prevent packetZero from being sent. If sent at size 0, the connection will close. 
       if (e.data.size > 0) {
         connection?.send(e.data);
       }
@@ -66,7 +60,6 @@ const App: () => JSX.Element = () => {
       if (thisCaption !== "" && thisCaption !== lastSegmentRef.current) {
         console.log('thisCaption !== ""', thisCaption);
         setCaption(thisCaption);
-        setTranscript((prev) => prev + ' ' + thisCaption);
         transcriptRef.current += ' ' + thisCaption;
         lastSegmentRef.current = thisCaption;
       }
@@ -75,20 +68,8 @@ const App: () => JSX.Element = () => {
       if (thisCaption.toLowerCase().includes("stop")) {
         console.log("STOPWORD detected!");
         saveTranscriptToFile(transcriptRef.current);
-      } 
-      
-      function saveTranscriptToFile(text: string) {
-        const blob = new Blob([text], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
-    
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'transcript.txt';
-        a.click();
-    
-        URL.revokeObjectURL(url); // Clean up
       }
-      
+
       if (isFinal && speechFinal) {
         clearTimeout(captionTimeout.current);
         captionTimeout.current = setTimeout(() => {
@@ -96,6 +77,18 @@ const App: () => JSX.Element = () => {
           clearTimeout(captionTimeout.current);
         }, 3000);
       }
+    };
+
+    const saveTranscriptToFile = (text: string) => {
+      const blob = new Blob([text], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'transcript.txt';
+      a.click();
+
+      URL.revokeObjectURL(url);
     };
 
     if (connectionState === LiveConnectionState.OPEN) {
@@ -106,13 +99,11 @@ const App: () => JSX.Element = () => {
     }
 
     return () => {
-      // prettier-ignore
       connection.removeListener(LiveTranscriptionEvents.Transcript, onTranscript);
       microphone.removeEventListener(MicrophoneEvents.DataAvailable, onData);
       clearTimeout(captionTimeout.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [connectionState]);
+  }, [connection, connectionState, microphone, startMicrophone]);
 
   useEffect(() => {
     if (!connection) return;
@@ -133,25 +124,21 @@ const App: () => JSX.Element = () => {
     return () => {
       clearInterval(keepAliveInterval.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [microphoneState, connectionState]);
+  }, [microphoneState, connectionState, connection]);
 
   return (
-    <>
-      <div className="flex h-full antialiased">
-        <div className="flex flex-row h-full w-full overflow-x-hidden">
-          <div className="flex flex-col flex-auto h-full">
-            {/* height 100% minus 8rem */}
-            <div className="relative w-full h-full">
-              {microphone && <Visualizer microphone={microphone} />}
-              <div className="absolute bottom-[8rem]  inset-x-0 max-w-4xl mx-auto text-center">
-                {caption && <span className="bg-black/70 p-8">{caption}</span>}
-              </div>
+    <div className="flex h-full antialiased">
+      <div className="flex flex-row h-full w-full overflow-x-hidden">
+        <div className="flex flex-col flex-auto h-full">
+          <div className="relative w-full h-full">
+            {microphone && <Visualizer microphone={microphone} />}
+            <div className="absolute bottom-[8rem] inset-x-0 max-w-4xl mx-auto text-center">
+              {caption && <span className="bg-black/70 p-8">{caption}</span>}
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
