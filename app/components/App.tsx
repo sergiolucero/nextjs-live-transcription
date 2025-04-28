@@ -44,7 +44,7 @@ const App: () => JSX.Element = () => {
   }, [microphoneState]);
 
   useEffect(() => {
-e    if (!microphone) return;
+    if (!microphone) return;
     if (!connection) return;
 
     const onData = (e: BlobEvent) => {
