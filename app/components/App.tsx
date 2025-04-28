@@ -67,9 +67,19 @@ const App: () => JSX.Element = () => {
 
       if (thisCaption.toLowerCase().includes("stop")) {
         console.log("STOPWORD detected!");
-      } else 
-      {
-        console.log("          not stop");
+        saveTranscriptToFile(transcript);
+      } 
+      
+      function saveTranscriptToFile(text) {
+        const blob = new Blob([text], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+    
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'transcript.txt';
+        a.click();
+    
+        URL.revokeObjectURL(url); // Clean up
       }
       
       if (isFinal && speechFinal) {
