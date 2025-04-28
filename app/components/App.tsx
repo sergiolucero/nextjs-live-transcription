@@ -65,8 +65,10 @@ e    if (!microphone) return;
         setCaption(thisCaption);
       }
 
-      if (thisCaption.toLowerCase().includes('stop')) {
+      if (thisCaption.toLowerCase().includes("stop")) {
         console.log("STOPWORD detected!");
+      } else {
+        console.log('          not stop');
       }
       
       if (isFinal && speechFinal) {
