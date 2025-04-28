@@ -64,11 +64,12 @@ const App: () => JSX.Element = () => {
       if (thisCaption !== "") {
         console.log('thisCaption !== ""', thisCaption);
         setCaption(thisCaption);
+        setTranscript((prev) => prev + ' ' + thisCaption);
       }
 
       if (thisCaption.toLowerCase().includes("stop")) {
         console.log("STOPWORD detected!");
-        saveTranscriptToFile(thisCaption);
+        saveTranscriptToFile(transcript);
       } 
       
       function saveTranscriptToFile(text: string) {
