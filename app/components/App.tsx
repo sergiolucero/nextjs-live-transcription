@@ -76,14 +76,24 @@ const App: () => JSX.Element = () => {
         console.log("STOPWORD detected!");
         saveTranscriptToFile(transcriptRef.current);
       } 
-      
-      function saveTranscriptToFile(text: string) {
+
+      const generateTimestamp = (): string => {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        return `${year}-${month}-${day}_${hours}${minutes}`;
+      };
+      function saveTranscriptToFile(text: string, timestamp: string) {
         const blob = new Blob([text], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
-    
+
+        const timestamp = generateTimestamp();
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'transcript.txt';
+        a.download = 'transcript_${timestamp}.txt';
         a.click();
     
         URL.revokeObjectURL(url); // Clean up
