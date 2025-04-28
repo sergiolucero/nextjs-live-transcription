@@ -23,7 +23,7 @@ const App: () => JSX.Element = () => {
     useMicrophone();
   const captionTimeout = useRef<any>();
   const keepAliveInterval = useRef<any>();
-  const [transcript, setTranscript] = useState('');
+  const [transcript, setTranscript] = useState<string>('');;
 
   useEffect(() => {
     setupMicrophone();
