@@ -67,6 +67,7 @@ const App: () => JSX.Element = () => {
 
       if (thisCaption.toLowerCase().includes("stop")) {
         console.log("STOPWORD detected!");
+        const [transcript, setTranscript] = useState('');
         saveTranscriptToFile(transcript);
       } 
       
