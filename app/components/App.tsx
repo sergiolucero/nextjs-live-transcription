@@ -32,7 +32,7 @@ const App: () => JSX.Element = () => {
   useEffect(() => {
     if (microphoneState === MicrophoneState.Ready) {
       connectToDeepgram({
-        model: "nova-3",
+        model: "nova-2",
         interim_results: true,
         language: "es-US",
         smart_format: true,
