@@ -16,7 +16,7 @@ import Visualizer from "./Visualizer";
 
 const App: () => JSX.Element = () => {
   const [caption, setCaption] = useState<string | undefined>(
-    "heshoCON Deepgram"
+    "CORFO-CETRAM Deepgram"
   );
   const { connection, connectToDeepgram, connectionState } = useDeepgram();
   const { setupMicrophone, microphone, startMicrophone, microphoneState } =
@@ -44,7 +44,7 @@ const App: () => JSX.Element = () => {
   }, [microphoneState]);
 
   useEffect(() => {
-    if (!microphone) return;
+e    if (!microphone) return;
     if (!connection) return;
 
     const onData = (e: BlobEvent) => {
