@@ -23,7 +23,8 @@ const App: () => JSX.Element = () => {
     useMicrophone();
   const captionTimeout = useRef<any>();
   const keepAliveInterval = useRef<any>();
-  const [transcript, setTranscript] = useState<string>('');;
+  const [transcript, setTranscript] = useState<string>('');
+  const transcriptRef = useRef<string>('');
 
   useEffect(() => {
     setupMicrophone();
@@ -65,12 +66,14 @@ const App: () => JSX.Element = () => {
         console.log('thisCaption !== ""', thisCaption);
         setCaption(thisCaption);
         setTranscript((prev) => prev + ' ' + thisCaption);
+        transcriptRef.current += ' ' + thisCaption;
+
       }
       console.log("TRANSCRIPT", transcript);
 
       if (thisCaption.toLowerCase().includes("stop")) {
         console.log("STOPWORD detected!");
-        saveTranscriptToFile(transcript);
+        saveTranscriptToFile(transcriptRef.current);
       } 
       
       function saveTranscriptToFile(text: string) {
