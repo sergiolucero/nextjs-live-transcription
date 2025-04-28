@@ -71,7 +71,7 @@ const App: () => JSX.Element = () => {
         saveTranscriptToFile(transcript);
       } 
       
-      function saveTranscriptToFile(text) {
+      function saveTranscriptToFile(text: string) {
         const blob = new Blob([text], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
     
