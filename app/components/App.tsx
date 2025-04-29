@@ -136,21 +136,28 @@ const App: () => JSX.Element = () => {
   }, [microphoneState, connectionState]);
 
   return (
-    <>
-      <div className="flex h-full antialiased">
-        <div className="flex flex-row h-full w-full overflow-x-hidden">
-          <div className="flex flex-col flex-auto h-full">
-            {/* height 100% minus 8rem */}
-            <div className="relative w-full h-full">
-              {microphone && <Visualizer microphone={microphone} />}
-              <div className="absolute bottom-[8rem]  inset-x-0 max-w-4xl mx-auto text-center">
-                {caption && <span className="bg-black/70 p-8">{caption}</span>}
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="flex flex-col h-full antialiased">
+    <div className="flex flex-row h-full w-full">
+      <div className="w-1/2 h-1/2 flex items-center justify-center bg-gray-100">
+        ONE
       </div>
-    </>
+      <div className="w-1/2 h-1/2 flex items-center justify-center bg-gray-200">
+        TWO
+      </div>
+    </div>
+    <div className="flex flex-row h-1/2 w-full">
+      <div className="w-1/2 h-full relative">
+        {microphone && <Visualizer microphone={microphone} />}
+      </div>
+      <div className="w-1/2 h-full flex items-center justify-center relative">
+        {caption && (
+          <div className="bg-black/70 p-8 text-center">
+            <span className="text-white">{caption}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
   );
 };
 
