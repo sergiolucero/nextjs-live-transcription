@@ -138,11 +138,11 @@ const App: () => JSX.Element = () => {
   return (
     <div className="flex flex-col h-full antialiased">
     <div className="flex flex-row h-full w-full">
-      <div className="w-1/2 h-1/2 flex items-center justify-center bg-gray-100">
-        ONE
+      <div className="w-1/2 h-1/2 flex items-center justify-center bg-black/80">
+        UNOUNOUNO
       </div>
-      <div className="w-1/2 h-1/2 flex items-center justify-center bg-gray-200">
-        TWO
+      <div className="w-1/2 h-1/2 flex items-center justify-center bg-black/200">
+        DOSDOSDOS
       </div>
     </div>
     <div className="flex flex-row h-1/2 w-full">
