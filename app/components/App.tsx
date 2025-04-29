@@ -73,7 +73,7 @@ const App: () => JSX.Element = () => {
       console.log("TRANSCRIPT", transcriptRef.current);
 
       if (thisCaption.toLowerCase().includes("stop")) {
-        console.log("STOPWORD detected!");
+        console.log("SERGIOIVAN: STOPWORD detected!");
         saveTranscriptToFile(transcriptRef.current);
       } 
       
