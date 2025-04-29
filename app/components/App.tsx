@@ -1,4 +1,4 @@
-e"use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import {
@@ -63,14 +63,12 @@ const App: () => JSX.Element = () => {
       let thisCaption = data.channel.alternatives[0].transcript;
 
       if (thisCaption !== "" && thisCaption !== lastSegmentRef.current) {
-        console.log('thisCaption !== ""', thisCaption);
         setCaption(thisCaption);
         setTranscript((prev) => prev + '\n' + thisCaption);
-        transcriptRef.current += ' ' + thisCaption;
+        transcriptRef.current += '\n' + thisCaption;
         lastSegmentRef.current = thisCaption;
       }
-      console.log("TRANSCRIPT", transcriptRef.current);
-
+      
       if (thisCaption.toLowerCase().includes("stop")) {
         console.log("GROUND CONTROL TO SERGIOIVAN: STOPWORD detected!");
         saveTranscriptToFile(transcriptRef.current);
