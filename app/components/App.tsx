@@ -66,7 +66,7 @@ const App: () => JSX.Element = () => {
       if (thisCaption !== "" && thisCaption !== lastSegmentRef.current) {
         console.log('thisCaption !== ""', thisCaption);
         setCaption(thisCaption);
-        setTranscript((prev) => prev + ' ' + thisCaption);
+        setTranscript((prev) => prev + '\n' + thisCaption);
         transcriptRef.current += ' ' + thisCaption;
         lastSegmentRef.current = thisCaption;
       }
