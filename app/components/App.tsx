@@ -1,4 +1,4 @@
-"use client";
+e"use client";
 
 import { useEffect, useRef, useState } from "react";
 import {
@@ -72,7 +72,7 @@ const App: () => JSX.Element = () => {
       console.log("TRANSCRIPT", transcriptRef.current);
 
       if (thisCaption.toLowerCase().includes("stop")) {
-        console.log("SERGIOIVAN: STOPWORD detected!");
+        console.log("GROUND CONTROL TO SERGIOIVAN: STOPWORD detected!");
         saveTranscriptToFile(transcriptRef.current);
       } 
       
