@@ -16,7 +16,7 @@ import Visualizer from "./Visualizer";
 
 const App: () => JSX.Element = () => {
   const [caption, setCaption] = useState<string | undefined>(
-    "CORFO-CETRAM Deepgram"
+    "CORFO-CETRAM Deepgram v0.1"
   );
   const { connection, connectToDeepgram, connectionState } = useDeepgram();
   const { setupMicrophone, microphone, startMicrophone, microphoneState } =
@@ -80,7 +80,7 @@ const App: () => JSX.Element = () => {
     
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'transcript.txt';
+        a.download = 'transcript_now.txt';
         a.click();
     
         URL.revokeObjectURL(url); // Clean up
