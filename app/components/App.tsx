@@ -62,7 +62,6 @@ const App: () => JSX.Element = () => {
       const { is_final: isFinal, speech_final: speechFinal } = data;
       let thisCaption = data.channel.alternatives[0].transcript;
 
-      console.log("thisCaption", thisCaption);
       if (thisCaption !== "" && thisCaption !== lastSegmentRef.current) {
         console.log('thisCaption !== ""', thisCaption);
         setCaption(thisCaption);
