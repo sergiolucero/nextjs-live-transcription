@@ -64,13 +64,15 @@ const App: () => JSX.Element = () => {
 
       if (thisCaption !== "" && thisCaption !== lastSegmentRef.current) {
         setCaption(thisCaption);
+        console.log(thisCaption)
         setTranscript((prev) => prev + '\n' + thisCaption);
         transcriptRef.current += '\n' + thisCaption;
         lastSegmentRef.current = thisCaption;
       }
       
       if (thisCaption.toLowerCase().includes("stop")) {
-        console.log("GROUND CONTROL TO SERGIOIVAN: STOPWORD detected!");
+        console.log("STOPPING: STOPWORD detected!");
+        setCaption('STOP!')
         saveTranscriptToFile(transcriptRef.current);
       } 
       
