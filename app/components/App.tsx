@@ -26,6 +26,7 @@ const App: () => JSX.Element = () => {
   const [transcript, setTranscript] = useState<string>('');
   const transcriptRef = useRef<string>('');
   const lastSegmentRef = useRef<string>('');
+  const [startTime, setStartTime] = useState<Date | null>(null);
   
   useEffect(() => {
     setupMicrophone();
@@ -75,6 +76,13 @@ const App: () => JSX.Element = () => {
         setCaption('STOP!')
         saveTranscriptToFile(transcriptRef.current);
       } 
+
+      const formatTime = (date: Date): string => {
+        const hours = date.getHours().toString().padStart(2, '0');
+        const minutes = date.getMinutes().toString().padStart(2, '0');
+        const seconds = date.getSeconds().toString().padStart(2, '0');
+        return `${hours}:${minutes}:${seconds}`;
+      };
       
       function saveTranscriptToFile(text: string) {
         const blob = new Blob([text], { type: 'text/plain' });
@@ -82,7 +90,7 @@ const App: () => JSX.Element = () => {
     
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'transcript_now.txt';
+        a.download = 'transcript_{formatTime(startTime)}.txt';
         a.click();
     
         URL.revokeObjectURL(url); // Clean up
