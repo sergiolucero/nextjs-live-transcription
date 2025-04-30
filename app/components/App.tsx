@@ -170,18 +170,18 @@ const RadioButtons = () => {
   return (
     <div className="flex flex-col h-full antialiased">
     <div className="flex flex-row h-full w-full">
-      <div className="w-1/2 h-1/2 flex items-center justify-center bg-black/80">
-        UNOUNOUNO
+      <div className="w-1/3 h-2/3 flex items-center justify-center bg-black/80">
+        RadioButtons()
       </div>
-      <div className="w-1/2 h-1/2 flex items-center justify-center bg-black/200">
+      <div className="w-1/3 h-2/3 flex items-center justify-center bg-black/200">
         DOSDOSDOS
       </div>
     </div>
     <div className="flex flex-row h-1/2 w-full">
-      <div className="w-1/2 h-full relative">
+      <div className="w-1/3 h-full relative">
         {microphone && <Visualizer microphone={microphone} />}
       </div>
-      <div className="w-1/2 h-full flex items-center justify-center relative">
+      <div className="w-2/3 h-full flex items-center justify-center relative">
         {caption && (
           <div className="bg-black/70 p-8 text-center">
             <span className="text-white">{caption}</span>
