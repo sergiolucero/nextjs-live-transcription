@@ -114,7 +114,7 @@ const RadioButtons = () => {
     
         const a = document.createElement('a');
         a.href = url;
-        a.download = `transcript_${formatTime(startTime)}.txt`;
+        a.download = "transcript_${formatTime(startTime)}.txt";
         a.click();
     
         URL.revokeObjectURL(url); // Clean up
