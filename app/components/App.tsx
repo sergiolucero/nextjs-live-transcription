@@ -183,7 +183,7 @@ const RadioButtons = () => {
       </div>
       <div className="w-2/3 h-full flex items-center justify-center relative">
         {caption && (
-          <div className="bg-white p-8 text-center">
+          <div className="bg-yellow p-12 text-center">
             <span className="text-white">{caption}</span>
           </div>
         )}
