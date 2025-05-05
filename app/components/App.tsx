@@ -37,11 +37,11 @@ const App: () => JSX.Element = () => {
     if (microphoneState === MicrophoneState.Ready) {
       connectToDeepgram({
         model: "nova-2",
-        interim_results: true,
+        interim_results: False,
         language: "es-US",
         smart_format: true,
         filler_words: true,
-        utterance_end_ms: 3000,
+        utterance_end_ms: 1000,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
