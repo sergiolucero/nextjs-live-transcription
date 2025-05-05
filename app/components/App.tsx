@@ -16,7 +16,7 @@ import Visualizer from "./Visualizer";
 
 const App: () => JSX.Element = () => {
   const [caption, setCaption] = useState<string | undefined>(
-    "CORFO-CETRAM Deepgram v0.11"
+    "CORFO-CETRAM Deepgram v0.12: 05/05/2025"
   );
   const { connection, connectToDeepgram, connectionState } = useDeepgram();
   const { setupMicrophone, microphone, startMicrophone, microphoneState } =
@@ -171,10 +171,10 @@ const RadioButtons = () => {
     <div className="flex flex-col h-full antialiased">
     <div className="flex flex-row h-full w-full">
       <div className="w-1/3 h-2/3 flex items-center justify-center bg-black/80">
-        RadioButtons()
+        Resumen Ficha Médica
       </div>
       <div className="w-1/3 h-2/3 flex items-center justify-center bg-black/200">
-        DOSDOSDOS
+        Resumen Transcripción
       </div>
     </div>
     <div className="flex flex-row h-1/2 w-full">
@@ -183,7 +183,7 @@ const RadioButtons = () => {
       </div>
       <div className="w-2/3 h-full flex items-center justify-center relative">
         {caption && (
-          <div className="bg-black/70 p-8 text-center">
+          <div className="bg-white p-8 text-center">
             <span className="text-white">{caption}</span>
           </div>
         )}
