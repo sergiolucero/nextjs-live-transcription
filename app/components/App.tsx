@@ -59,29 +59,6 @@ const App: () => JSX.Element = () => {
       }
     };
 
-const RadioButtons = () => {
-  const [selectedOption, setSelectedOption] = useState('Option 1');
-
-  const options = ['Sergio','Lucero','Vera'];
-
-  return (
-    <div>
-      {options.map((option) => (
-        <label key={option}>
-          <input
-            type="radio"
-            name="my-radio-group"
-            value={option}
-            checked={selectedOption === option}
-            onChange={(e) => setSelectedOption(e.target.value)}
-          />
-          {option}
-        </label>
-      ))}
-      <p>Selected: {selectedOption}</p>
-    </div>
-  );
-};
     
     const onTranscript = (data: LiveTranscriptionEvent) => {
       const { is_final: isFinal, speech_final: speechFinal } = data;
