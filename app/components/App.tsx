@@ -1,4 +1,4 @@
-"use client";
+e"use client";
 
 import { useEffect, useRef, useState } from "react";
 import {
@@ -36,7 +36,7 @@ const App: () => JSX.Element = () => {
   useEffect(() => {
     if (microphoneState === MicrophoneState.Ready) {
       connectToDeepgram({
-        model: "nova-2",
+        model: "nova-3-medical",
         interim_results: true,
         language: "es-US",
         smart_format: true,
