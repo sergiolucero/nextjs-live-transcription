@@ -39,6 +39,7 @@ const App: () => JSX.Element = () => {
         model: "nova-3",   // -medical only in English perhaps
         interim_results: true,
         language: "multi",
+        keyterm: ['levodopa', 'akinetón'],
         smart_format: true,
         filler_words: true,
         utterance_end_ms: 1000,
