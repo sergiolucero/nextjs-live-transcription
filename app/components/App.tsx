@@ -39,7 +39,7 @@ const App: () => JSX.Element = () => {
         model: "nova-2",   // -medical only in English perhaps
         interim_results: true,
         language: "multi",
-        keyterm: ["akinetón", "benserazida"],
+        keyterm: ["akineton", "benserazida"],
         smart_format: true,
         filler_words: true,
         utterance_end_ms: 1000,
