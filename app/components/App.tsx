@@ -16,7 +16,7 @@ import Visualizer from "./Visualizer";
 
 const App: () => JSX.Element = () => {
   const [caption, setCaption] = useState<string | undefined>(
-    "CORFO-CETRAM Deepgram v0.12: 05/05/2025"
+    "CORFO-CETRAM Deepgram v0.13: 13/05/2025"
   );
   const { connection, connectToDeepgram, connectionState } = useDeepgram();
   const { setupMicrophone, microphone, startMicrophone, microphoneState } =
@@ -39,7 +39,7 @@ const App: () => JSX.Element = () => {
         model: "nova-2",   // -medical only in English perhaps
         interim_results: true,
         language: "multi",
-        keywords: ["akineton", "benserazida"],
+        keywords: ["akineton", "benserazida", "angiotac", "citalopram", "eutirox"],
         smart_format: true,
         filler_words: true,
         utterance_end_ms: 1000,
