@@ -38,7 +38,7 @@ const App: () => JSX.Element = () => {
       connectToDeepgram({
         model: "nova-2",   // -medical only in English perhaps
         interim_results: true,
-        language: "multi",
+        language: "es-US",
         keywords: ["akineton", "benserazida", "angiotac", "citalopram", "eutirox"],
         smart_format: true,
         filler_words: true,
